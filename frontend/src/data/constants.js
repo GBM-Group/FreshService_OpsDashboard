@@ -717,15 +717,15 @@ export const OPS_KPIS = {
 export const FINANCE_KPIS = {
     group: [
         {
-            label: 'Direct Cost Total',
-            value: '£767,400',
-            change: '+2.8%',
+            label: 'Income',
+            value: '£1,310,386',
+            change: '+2.4%',
             direction: 'up',
         },
         {
-            label: 'Gross P&L',
-            value: '£318,300',
-            change: '+2.4%',
+            label: 'Direct Cost Total',
+            value: '£767,400',
+            change: '+2.8%',
             direction: 'up',
         },
         {
@@ -736,7 +736,7 @@ export const FINANCE_KPIS = {
         },
         {
             label: 'Net P&L',
-            value: '-£96,600',
+            value: '£43,600',
             change: '+1.2%',
             direction: 'up',
         },
