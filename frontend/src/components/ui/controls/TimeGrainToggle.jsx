@@ -10,7 +10,8 @@ export function TimeGrainToggle({ value, onChange }) {
                     className={
                         'pill-toggle-option' +
                         (value === tg.id ? ' pill-toggle-active' : '') +
-                        (tg.disabled ? ' pill-toggle-disabled' : '')
+                        (tg.disabled ? ' pill-toggle-disabled' : '') +
+                        (tg.id === 'ytd' ? ' pill-toggle-muted' : '')
                     }
                     onClick={() => !tg.disabled && onChange(tg.id)}
                     disabled={tg.disabled}

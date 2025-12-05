@@ -3,7 +3,7 @@
 export const TIME_GRAINS = [
     { id: 'daily', label: 'Daily', disabled: false },
     { id: 'period', label: 'Period', disabled: false },
-    { id: 'ytd', label: 'YTD', disabled: false },
+    { id: 'ytd', label: 'YTD', disabled: true },
 ];
 
 export const timeGrainLabel = {
@@ -26,6 +26,39 @@ export const PERIODS = [
 export function getPeriodIndex(periodId) {
     const idx = PERIODS.findIndex((p) => p.id === periodId);
     return idx === -1 ? 0 : idx;
+}
+
+export const PERIOD_CALENDAR = [
+    { number: 1, start: '2025-04-26' },
+    { number: 2, start: '2025-05-24' },
+    { number: 3, start: '2025-06-21' },
+    { number: 4, start: '2025-07-19' },
+    { number: 5, start: '2025-08-16' },
+    { number: 6, start: '2025-09-13' },
+    { number: 7, start: '2025-10-11' },
+    { number: 8, start: '2025-11-08' },
+];
+
+export function getCurrentPeriodLabel(date = new Date()) {
+    const target = new Date(
+        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+    );
+
+    const schedule = PERIOD_CALENDAR.map((p) => ({
+        ...p,
+        startDate: new Date(p.start),
+    })).sort((a, b) => a.startDate - b.startDate);
+
+    let current = schedule[0];
+    for (let i = 0; i < schedule.length; i += 1) {
+        if (target >= schedule[i].startDate) {
+            current = schedule[i];
+        } else {
+            break;
+        }
+    }
+
+    return `Period ${current.number}`;
 }
 
 export function getPeriodFactor(periodId) {

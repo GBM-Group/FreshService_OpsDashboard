@@ -8,7 +8,11 @@ import { ThemeToggle } from './components/ui/controls/ThemeToggle';
 import { OpsView } from './components/views/OpsView';
 import { FinanceView } from './components/views/FinanceView';
 import { DailyView } from './components/views/DailyView';
-import { getPeriodIndex, getPeriodFactor } from './data/constants';
+import {
+    getPeriodIndex,
+    getPeriodFactor,
+    getCurrentPeriodLabel,
+} from './data/constants';
 
 export default function App() {
     const [activeTab, setActiveTab] = useState('ops');
@@ -22,6 +26,7 @@ export default function App() {
     const periodIndex = getPeriodIndex(period);
     const periodLabel = `P${periodIndex + 1}`;
     const periodFactor = getPeriodFactor(period);
+    const currentPeriodLabel = getCurrentPeriodLabel();
     const todayLabel = new Date().toLocaleDateString('en-GB', {
         weekday: 'short',
         day: 'numeric',
@@ -55,9 +60,10 @@ export default function App() {
                 }`}
             >
                 <div className="app-header-left">
-                    <h1 className="app-title">{headingBase}</h1>
-
-                    <div className="app-date">Today · {todayLabel}</div>
+                    <h1 className="app-title">{headingBase} (PROTOTYPE)</h1>
+                    <div className="app-date">
+                        Today · {todayLabel} · {currentPeriodLabel}
+                    </div>
                 </div>
 
                 <div className="app-header-center">
